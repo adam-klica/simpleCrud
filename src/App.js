@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { Box, Text } from '@chakra-ui/react'
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react"
 
+import Header from './components/Header';
+import PostsList from './components/PostsList';
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box style={{backgroundColor: "#F1F1F1", height: "100vh"}}>
+      <Header />
+      <Box>
+        <Text  mt={6} textAlign="center" fontSize="5xl" fontWeight="bold">All Posts</Text>
+          <PostsList/>
+      </Box>
+    </Box>
   );
 }
 
