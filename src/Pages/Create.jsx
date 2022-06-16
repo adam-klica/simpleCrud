@@ -1,15 +1,12 @@
 import { Box, Text, FormControl, FormLabel, Input, Textarea, Center, Button } from '@chakra-ui/react'
 import Header from '../components/Header';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Navigate } from "react-router-dom";
 
-
 const Create = () => {
-
-
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('')
     const [loading, setLoading] = useState(false)
@@ -26,7 +23,7 @@ const Create = () => {
                 draggable: true,
                 progress: undefined,
             });
-            setTimeout(function () { setLoading(false) }, 3000);
+            setTimeout(function () { setLoading(false) }, 1000);
             return
         }
 
@@ -57,21 +54,20 @@ const Create = () => {
                 .catch(function (error) {
                     console.log(error);
                 });
-
         }
         sendData()
     }
 
     return (
-        <Box >
+        <Box bg="gray.300" height="100vh">
             <Header />
             <Text textAlign="center" mt={6} fontSize="5xl" fontWeight="bold" pb={20}>Create new post</Text>
             <Box pl={20} pr={20}>
-                <FormControl bg="gray.100" p={35}>
+                <FormControl p={35} borderRadius={15} bg="white">
                     <FormLabel htmlFor='email'>Title</FormLabel>
                     <Input
+                        variant='filled'
                         placeholder='Enter your title here'
-                        bg="white"
                         id='email'
                         type='email'
                         value={title}
@@ -82,7 +78,7 @@ const Create = () => {
                     <FormLabel mt={4} htmlFor='email'>Content</FormLabel>
                     <Textarea
                         placeholder='Enter your content here'
-                        bg="white"
+                        variant='filled'
                         id='email'
                         rows={7}
                         type='email'

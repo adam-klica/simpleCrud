@@ -11,8 +11,6 @@ import {
 import Create from './Pages/Create';
 import PostDetails from './Pages/PostDetails';
 
-
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

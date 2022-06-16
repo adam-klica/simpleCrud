@@ -1,13 +1,12 @@
 import { Box, Text, FormControl, FormLabel, Input, Textarea, Button } from "@chakra-ui/react"
-import Header from "../components/Header"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Navigate } from "react-router-dom";
+import Header from "../components/Header"
 
-
-const PostDetails = (props) => {
+const PostDetails = () => {
     const [post, setPost] = useState()
     const [navigator, setNavigator] = useState(false)
     const id = window.location.pathname.slice(6)
@@ -58,8 +57,6 @@ const PostDetails = (props) => {
                 progress: undefined,
             });
             setTimeout(function () { setNavigator(true) }, 4000);
-
-
         }
     }
     useEffect(() => {
@@ -72,16 +69,16 @@ const PostDetails = (props) => {
         fetchData()
     }, []);
     return (
-        <Box>
+        <Box bg="gray.300" height="100vh">
             <Header />
             <Text pt={35} pb={35} textAlign="center" fontSize="5xl" fontWeight="bold">Edit post</Text>
             {post &&
                 <Box pl={20} pr={20}>
-                    <FormControl bg="gray.100" p={35}>
+                    <FormControl bg="white" borderRadius={15} p={35}>
                         <FormLabel htmlFor='email'>Title</FormLabel>
                         <Input
                             placeholder='Enter your title here'
-                            bg="white"
+                            variant="filled"
                             id='email'
                             type='email'
                             defaultValue={post.title}
@@ -91,7 +88,7 @@ const PostDetails = (props) => {
                         <Textarea
                             rows={7}
                             placeholder='Enter your content here'
-                            bg="white"
+                            variant="filled"
                             id='email'
                             type='email'
                             defaultValue={post.body}
@@ -102,7 +99,8 @@ const PostDetails = (props) => {
                             <Button colorScheme='red' onClick={deleteHandler}>Delete</Button>
                         </Box>
                     </FormControl>
-                </Box>}
+                </Box>
+            }
             {navigator ? <Navigate to="/" replace={true} /> : <></>}
             <ToastContainer
                 position="bottom-right"
